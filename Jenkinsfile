@@ -36,10 +36,10 @@ pipeline {
                             $class: 'CheckStylePublisher',
                             pattern: "target/checkstyle-result.xml"
                         ])
-                        step([
-                            $class: 'SpotBugs',
-                            pattern: "target/spotbugsXml.xml"
-                        ])
+//                        step([
+//                            $class: 'SpotBugs',
+//                            pattern: "target/spotbugsXml.xml"
+//                        ])
 //                        archiveArtifacts "target/checkstyle-result.xml"
 //                        archiveArtifacts "target/spotbugsXml.xml"
                     }
