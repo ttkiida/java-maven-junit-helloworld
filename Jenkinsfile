@@ -36,8 +36,7 @@ pipeline {
                             enabledForFailure: true, aggregatingResults: true,
                             tools: [
                                 checkStyle(pattern: 'checkstyle-result.xml'),
-                                spotBugs(pattern: 'spotbugsXml.xml')
-                            ]
+                                spotBugs(pattern: 'spotbugsXml.xml')]
                     }
                 }
             }
