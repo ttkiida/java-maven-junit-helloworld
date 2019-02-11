@@ -42,10 +42,9 @@ pipeline {
                         archiveArtifacts 'target/stepcount.xls'
                         
                         jacoco(
-                            execPattern: '**/**.exec',
-                            classPattern: '**/classes',
-                            sourcePattern: '**/src/main/java',
-                            inclusionPattern: '**/*.java'
+                            execPattern: 'target/jacoco.exec',
+                            classPattern: 'target/classes',
+                            sourcePattern: 'src/main/java'
                         )
                     }
                 }
