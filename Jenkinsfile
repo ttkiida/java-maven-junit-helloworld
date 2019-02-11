@@ -37,7 +37,7 @@ pipeline {
                             pattern: "target/checkstyle-result.xml"
                         ])
                         step([
-                            $class: 'FindBugsPublisher',
+                            $class: 'SpotBugsAnalysisPublisher',
                             pattern: "target/spotbugsXml.xml"
                         ])
 //                        archiveArtifacts "target/checkstyle-result.xml"
