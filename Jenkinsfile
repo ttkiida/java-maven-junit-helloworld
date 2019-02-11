@@ -32,16 +32,9 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        step([
-                            $class: 'CheckStylePublisher',
-                            pattern: "target/checkstyle-result.xml"
-                        ])
-//                        step([
-//                            $class: 'SpotBugs',
-//                            pattern: "target/spotbugsXml.xml"
-//                        ])
-//                        archiveArtifacts "target/checkstyle-result.xml"
-//                        archiveArtifacts "target/spotbugsXml.xml"
+
+                        recordIssues enabledForFailure: true, tools: [[tool: [$class: 'CheckStyle']]]
+                        recordIssues enabledForFailure: true, tools: [[tool: [$class: 'SpotBugs']]]
                     }
                 }
             }
