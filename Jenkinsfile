@@ -36,10 +36,17 @@ pipeline {
                         recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml')
                         
                         stepcounter outputFile: 'target/stepcount.xls', outputFormat: 'excel', settings: [
-                            [key:'main', filePattern: "src/main/java/**/*.java"],
-                            [key:'test', filePattern: "src/test/java/**/*.java"],
+                            [key:'main', filePattern: 'src/main/java/**/*.java'],
+                            [key:'test', filePattern: 'src/test/java/**/*.java'],
                         ]
-                        archiveArtifacts "target/stepcount.xls"
+                        archiveArtifacts 'target/stepcount.xls'
+                        
+                        jacoco(
+                            execPattern: '**/**.exec',
+                            classPattern: '**/classes',
+                            sourcePattern: '**/src/main/java',
+                            inclusionPattern: '**/*.java'
+                        )
                     }
                 }
             }
