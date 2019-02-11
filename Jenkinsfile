@@ -34,10 +34,7 @@ pipeline {
                         sh 'echo "Analysis stage"'
                         recordIssues
                             enabledForFailure: true, aggregatingResults: true,
-                            tools: [
-                                checkStyle(pattern: 'target/checkstyle-result.xml'),
-                                spotBugs(pattern: 'target/spotbugsXml.xml')
-                            ]
+                            tools: [checkStyle(pattern: 'target/checkstyle-result.xml'), spotBugs(pattern: 'target/spotbugsXml.xml')]
                     }
                 }
             }
