@@ -32,8 +32,16 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        archiveArtifacts "target/checkstyle-result.xml"
-                        archiveArtifacts "target/spotbugsXml.xml"
+                        step([
+                            $class: 'CheckStylePublisher',
+                            pattern: "target/checkstyle-result.xml"
+                        ])
+                        step([
+                            $class: 'FindBugsPublisher',
+                            pattern: "target/spotbugsXml.xml"
+                        ])
+//                        archiveArtifacts "target/checkstyle-result.xml"
+//                        archiveArtifacts "target/spotbugsXml.xml"
                     }
                 }
             }
