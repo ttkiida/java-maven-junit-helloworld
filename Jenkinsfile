@@ -34,6 +34,11 @@ pipeline {
                         sh 'echo "Analysis stage"'
                         recordIssues enabledForFailure: true, tool: checkStyle(pattern: 'target/checkstyle-result.xml')
                         recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml')
+                        
+                        stepcounter settings: [
+                            [key:'main', filePattern: "src/main/java/**/*.java"],
+                            [key:'test', filePattern: "src/test/java/**/*.java"],
+                        ]
                     }
                 }
             }
