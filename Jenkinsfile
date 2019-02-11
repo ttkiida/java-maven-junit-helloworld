@@ -32,7 +32,7 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        recordIssues enabledForFailure: true, aggregatingResults: true, tools: [checkStyle(pattern: 'target/checkstyle-result.xml'), spotBugs(pattern: 'target/spotbugsXml.xml')]
+                        recordIssues enabledForFailure: true, aggregatingResults: false, tools: [checkStyle(pattern: 'target/checkstyle-result.xml'), spotBugs(pattern: 'target/spotbugsXml.xml')]
                     }
                 }
             }
