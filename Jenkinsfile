@@ -33,11 +33,11 @@ pipeline {
                     dir('.') {
                         sh 'echo "Analysis stage"'
                         step([
-                            $class: 'CheckStylePublisher',
+                            $class: 'CheckStyle',
                             pattern: "target/checkstyle-result.xml"
                         ])
                         step([
-                            $class: 'SpotBugsPublisher',
+                            $class: 'SpotBugs',
                             pattern: "target/spotbugsXml.xml"
                         ])
 //                        archiveArtifacts "target/checkstyle-result.xml"
