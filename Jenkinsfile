@@ -33,7 +33,7 @@ pipeline {
                     dir('.') {
                         sh 'echo "Analysis stage"'
                         step([
-                            $class: 'CheckStyle',
+                            $class: 'CheckStylePublisher',
                             pattern: "target/checkstyle-result.xml"
                         ])
                         step([
