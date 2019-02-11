@@ -35,10 +35,11 @@ pipeline {
                         recordIssues enabledForFailure: true, tool: checkStyle(pattern: 'target/checkstyle-result.xml')
                         recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml')
                         
-                        stepcounter settings: [
+                        stepcounter outputFile: 'target/stepcount.xls', outputFormat: 'excel', settings: [
                             [key:'main', filePattern: "src/main/java/**/*.java"],
                             [key:'test', filePattern: "src/test/java/**/*.java"],
                         ]
+                        archiveArtifacts "target/stepcount.xls"
                     }
                 }
             }
